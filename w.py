@@ -1,41 +1,49 @@
-import urllib.request
-import requests
-import threading
-import json
-import random
+"""
+Clone adagruitLib:
+  git clone https://github.com/adafruit/Adafruit_Python_DHT.git
 
-# Define a function that will post on server every 15 Seconds
+Go to dir:
+  cd Adafruit_Python_DHT
 
-def poster():
-    threading.Timer(15,thingspeak_post).start()
-    val=random.randint(1,30)
-    URl='https://api.thingspeak.com/update?api_key='
-    KEY='VR2610I17URHI5ZK'
-    HEADER='&field1={}&field2={}'.format(val,val)
-    NEW_URL=URl+KEY+HEADER
-    print(NEW_URL)
-    data=urllib.request.urlopen(NEW_URL)
-    print(data)
+Download:
+  sudo apt-get install build-essential python-dev
 
-def reader():
-    URL='https://api.thingspeak.com/channels/557500/fields/1.json?api_key='
-    KEY='OV4JGT7SC2Y1E0HB'
-    HEADER='&results=2'
-    NEW_URL=URL+KEY+HEADER
-    print(NEW_URL)
+Install:
+  sudo python setup.py install
+"""
 
-    get_data=requests.get(NEW_URL).json()
-    #print(get_data)
-    channel_id=get_data['channel']['id']
+import sys
+from time import sleep  
+import Adafruit_DHT as dht
+import urllib2
 
-    feild_1=get_data['feeds']
-    #print(feild_1)
+dhtPin = 4
+delay = 15
+writeKey = 'VR2610I17URHI5ZK'
+writeUrl = 'https://api.thingspeak.com/update?api_key=%s' % writeKey
 
-    t=[]
-    for x in feild_1:
-        #print(x['field1'])
-        t.append(x['field1'])
+def getData():
+    humidity, temperature = dht.read_retry(dht.DHT11, dhtPin)
+    return (str(humidity), str(temperature))
 
-if __name__ == '__main__':
-    #thingspeak_post()
-    read_data_thingspeak()
+while True:
+    try:
+
+        humidity, temperature = getData()
+        
+        if isinstance(humidity, float) and isinstance(temperature, float):
+
+            conn = urllib2.urlopen(writeUrl + "&temperature=%s&humidity=%s" % (temperature, humidity))
+
+            print(conn.read())
+            print("Temperature: "+temperature)
+            print("Humidity: "+humidity)
+            conn.close()
+
+            sleep(int(delay))
+        
+        else:
+            print("Invalida data format on the return")
+    except:
+        print("shuting down")
+        break
