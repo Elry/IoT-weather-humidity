@@ -1,5 +1,5 @@
 """
-Clone adagruitLib:
+Clone Adafruit Lib:
   git clone https://github.com/adafruit/Adafruit_Python_DHT.git
 
 Go to dir:
