@@ -43,7 +43,7 @@ while True:
             sleep(int(delay))
         
         else:
-            print("Invalida data format on the return")
+            print("Invalid data format on the return")
     except:
-        print("shuting down")
+        print("Shuting down")
         break
