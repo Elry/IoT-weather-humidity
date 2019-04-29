@@ -28,7 +28,6 @@ def getData():
 
 while True:
     try:
-
         humidity, temperature = getData()
         
         if isinstance(humidity, float) and isinstance(temperature, float):
@@ -44,6 +43,7 @@ while True:
         
         else:
             print("Invalid data format on the return")
+            
     except:
         print("Shuting down")
         break
