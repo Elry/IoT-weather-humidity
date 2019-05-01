@@ -1,17 +1,3 @@
-"""
-Clone Adafruit Lib:
-  git clone https://github.com/adafruit/Adafruit_Python_DHT.git
-
-Go to dir:
-  cd Adafruit_Python_DHT
-
-Download:
-  sudo apt-get install build-essential python-dev
-
-Install:
-  sudo python setup.py install
-"""
-
 import sys
 from time import sleep  
 import Adafruit_DHT as dht
@@ -19,7 +5,7 @@ import urllib2
 
 dhtPin = 4
 delay = 15
-writeKey = 'VR2610I17URHI5ZK'
+writeKey = ''
 writeUrl = 'https://api.thingspeak.com/update?api_key=%s' % writeKey
 
 def getData():
