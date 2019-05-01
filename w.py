@@ -10,7 +10,8 @@ writeUrl = 'https://api.thingspeak.com/update?api_key=%s' % writeKey
 
 def getData():
     humidity, temperature = dht.read_retry(dht.DHT11, dhtPin)
-    return (str(humidity), str(temperature))
+    return humidity, temperature
+    #return (str(humidity), str(temperature))
 
 while True:
     try:
