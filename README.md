@@ -2,8 +2,6 @@
 
 External Libs: Adafruit;
 
-<br/>
-
 Components: DHT11, Raspberry-pi 3;
 
 <br/>
