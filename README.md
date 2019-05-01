@@ -4,15 +4,11 @@ External Libs: Adafruit;
 
 Components: DHT11, Raspberry-pi 3;
 
-<br/>
-
 API & Analytics: ThingsSpeak; 
-
-<br/>
 
 -- https://thingspeak.com/
 
-<br><br/>
+<br>
 
 Adafruit install:
   <br/>
