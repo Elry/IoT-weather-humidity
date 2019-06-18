@@ -12,7 +12,7 @@ def getData():
     humidity, temperature = dht.read_retry(dht.DHT11, dhtPin)
     return humidity, temperature
     #return (str(humidity), str(temperature))
-
+    #testing
 while True:
     try:
         humidity, temperature = getData()
