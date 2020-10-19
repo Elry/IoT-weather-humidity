@@ -25,4 +25,4 @@ Adafruit install:
     sudo python setup.py install
 
 
-Font: https://electronicshobbyists.com/raspberry-pi-sending-data-to-thingspeak-simplest-raspberry-pi-iot-project/
+Source: https://electronicshobbyists.com/raspberry-pi-sending-data-to-thingspeak-simplest-raspberry-pi-iot-project/
